@@ -1,0 +1,3 @@
+var nthPrime = function(n) {
+	
+};
