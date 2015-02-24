@@ -25,6 +25,23 @@ grid.forEach(function(elem, index) {
 	grid[index] = grid[index].split(" ");
 });
 
-var largestGridProduct = function(digits) {
-	
+var largestGridProduct = function() {
+	var maxProduct = 0;
+	grid.forEach(function(row, r) {
+		row.forEach(function(elem, c) {
+			if(r <= 16) {
+				maxProduct = Math.max(maxProduct, grid[r][c] * grid[r + 1][c] * grid[r + 2][c] * grid[r + 3][c]);
+				if(c >= 3) {
+					maxProduct = Math.max(maxProduct, grid[r][c] * grid[r + 1][c - 1] * grid[r + 2][c - 2] * grid[r + 3][c - 3]);
+				} else if(c <= 16)	{
+					maxProduct = Math.max(maxProduct, grid[r][c] * grid[r + 1][c + 1] * grid[r + 2][c + 2] * grid[r + 3][c + 3]);
+				}			
+			} else if (c <= 16) {
+				maxProduct = Math.max(maxProduct, grid[r][c] * grid[r][c + 1] * grid[r][c + 2] * grid[r][c + 3]);
+			}
+		});
+	});
+	return maxProduct;
 };
+
+debug(largestGridProduct());
