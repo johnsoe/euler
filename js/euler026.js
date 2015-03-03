@@ -3,11 +3,9 @@ var repeatedCycles = function(n) {
 	var val = 3;
 	for(var i = 4; i <= n; i++) {
 		var factors = getFactorization(i);
-		console.log(i + " " + factors['M']);
 		if(factors['M'] != 1) {
 			var length = findRepeatLength(factors['M']);
-			//console.log(i + " " + length);
-			if (length > maxLength) {
+			if (length >= maxLength) {
 				maxLength = length;
 				val = i; 
 			}
@@ -46,17 +44,11 @@ var getFactorization = function(n) {
 
 var findRepeatLength = function(n) {
 	var count = 1;
-	var repeatCheck = bigInt(9);
-	while (repeatCheck.mod(n) != 0) {
-		try {
-			repeatCheck = repeatCheck.add(bigInt(Math.pow(10, count)).multiply(9));
-			console.log(count + " " + repeatCheck);
-		} catch (err) {
-			continue;
-		}
+	var repeatCheck = 10 % n;
+	while (repeatCheck != 1) {
+		repeatCheck = (repeatCheck * 10) % n;
 		count++;
 	}
 	return count;
 };
-console.log(findRepeatLength(59));
-//console.log(repeatedCycles(1000));
+debug(repeatedCycles(1000));
