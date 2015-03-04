@@ -1,12 +1,12 @@
 var findFibonacciWithNDigits = function(digits) {
 	var first = 1;
 	var second = 1;
-	var next = new BigInteger(2);
+	var next = new BigNumber(2);
 	count = 2;
 	while(next.value.length < digits) {
-		next = new BigInteger(second).add(first);
-		first = new BigInteger(second);
-		second = new BigInteger(next);
+		next = new BigNumber(second).add(first);
+		first = new BigNumber(second);
+		second = new BigNumber(next);
 		count++;
 	}
 	return count;
