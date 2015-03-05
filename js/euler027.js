@@ -1,23 +1,17 @@
 //If b is not prime then n = 0 isprime == false
 //Check if b is prime, 
 
-var quadraticPrimes = function() {
+var quadraticPrimes = function(limit) {
 	var maxProduct = {product: 0, length: 0};
-	for(var a = -999; a < 1000; a++) {
-		for(var b = -999; b < 1000; b++) {
-			console.log("A: " + a + " B: " + b);
+	for(var a = -limit + 1; a < limit; a++) {
+		for(var b = -limit + 1; b < limit; b++) {
 			var n = 0;
-			while(true) {
-				var result = (n * n) + (a * n) + b;
-				if (!isPrime(result)) {
-					break;
-				}
+			while(isPrime(Math.abs(n * n + a * n + b))) {
 				n++;
 			}
 			if (n > maxProduct.length) {
 				maxProduct.product = a * b;
 				maxProduct.length = n;
-				console.log(maxProduct.length + " " + maxProduct.product);
 			}
 		}
 	}
@@ -40,4 +34,4 @@ var isPrime = function (num) {
 	return true;
 };
 
-console.log(quadraticPrimes());
+debug(quadraticPrimes(1000));
