@@ -12,7 +12,6 @@ var pandigitalProducts = function() {
 			var result = first * second;
 			var term = first + "" + second + "" + result;
 			if(nonRepeating[result] && !repeatedChar(term) && term.length == 9) {
-				debug(first + " " + second + " " + result);
 				products[result] = true;
 			}
 		});
@@ -32,9 +31,5 @@ var repeatedChar = function(phrase) {
 	}
 	return false;
 };
-
-debug(repeatedChar("1123"));
-debug(repeatedChar("1239"));
-debug(repeatedChar("1234569"));
 
 debug(pandigitalProducts());
