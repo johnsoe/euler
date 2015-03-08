@@ -26,9 +26,11 @@ var nthDigit = function(n) {
 	return (start + "").charAt(n);
 };
 
+//0 indexing instead of 1.
 debug(nthDigit(9));
 debug(nthDigit(99));
 debug(nthDigit(999));
 debug(nthDigit(9999));
 debug(nthDigit(99999));
 debug(nthDigit(999999));
+
